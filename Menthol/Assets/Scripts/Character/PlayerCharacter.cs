@@ -21,4 +21,13 @@ public class PlayerCharacter : Character
         spd = 2;
         actor = gameObject.AddComponent<PlayerActor>();
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Item")
+        {
+            GameManager.Instance.GetCompanionCapsule();
+            Destroy(other.gameObject);
+        }
+    }
 }

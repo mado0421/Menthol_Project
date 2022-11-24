@@ -21,11 +21,16 @@ abstract public class Character : MonoBehaviour
         get { return hp <= 0; }
     }
 
+    virtual protected void Die()
+    {
+        Destroy(gameObject);
+    }
+
     private void Update()
     {
         Move();
         actor.Act();
 
-        if (isDead) Destroy(gameObject);
+        if (isDead) Die();
     }
 }

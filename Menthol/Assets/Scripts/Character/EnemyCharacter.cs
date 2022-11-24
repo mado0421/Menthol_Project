@@ -15,10 +15,13 @@ public class EnemyCharacter : Character
 
     private void Awake()
     {
-        hp = 100;
-        spd = 3;
         actor = gameObject.AddComponent<NoneActor>();
         player = GameObject.Find("Player");
     }
 
+    override protected void Die()
+    {
+        GameManager.Instance.scoreMng.AddScore(1);
+        base.Die();
+    }
 }
